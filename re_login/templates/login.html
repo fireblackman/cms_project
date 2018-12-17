@@ -1,0 +1,84 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style>
+        h1,body,p{
+            margin: 0;
+        }
+        #login{
+            width: 100%;
+            height: 1000px;
+            margin: 0 auto;
+            background-image: url("{% static 'images/b.jpg' %} ");
+
+        }
+        h1{
+            float: left;
+            position: relative;
+            margin-top: 300px;
+            margin-left: 50%;
+            color: #036564;
+        }
+        .form{
+
+            float: left;
+            height: 150px;
+            width: 250px;
+            position: relative;
+            margin-top: 10px;
+            margin-left: 48%;
+        }
+        p{
+            text-align:left;
+            margin-top: 25px;
+            color:#3a6ab5;
+        }
+        .loginBtn{
+            height: 50px;
+            width: auto;
+            line-height:50px ;
+        }
+        .submitBtn{
+            float: left;
+            margin-top: 15px;
+            margin-left: 35px;
+        }
+        .registerBtn{
+            float: left;
+            margin-left: 100px;
+            color: #036564;
+            text-decoration: none;
+        }
+
+
+    </style>
+    <script>
+        window.onload = function(){
+            var p = document.getElementsByTagName('p')
+            var pwd_p = p[1]
+            console.log(pwd_p.innerHTML)
+            pwd_p.innerHTML = "<label for='id_password'>密&nbsp;&nbsp;&nbsp;码:</label> <input type='password' name='password' required='' id='id_password'>"
+        };
+    </script>
+</head>
+<body>
+    <div id="login">
+        <h1 class="header">欢迎登录</h1>
+        <div class="form">
+          <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {{ error }}
+
+            <div class="loginBtn">
+                <input class="submitBtn" type="submit" value="登录">
+                <a class="registerBtn" href="/register/">注册</a>
+            </div>
+          </form>
+        </div>
+    </div>
+</body>
+</html>
